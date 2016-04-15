@@ -3,7 +3,7 @@ from collections import OrderedDict
 #       ----- Exemplo
 """
 palavra = input("Digite um verbo:\n")
-a = prim_conj(palavra)
+a = indicativo(palavra)
 print(a.presente())
 print(a.pret_per())
 print(a.pret_imper())
@@ -11,16 +11,17 @@ print(a.pret_maisque())
 print(a.futuro_pres())
 print(a.futuro_pret())
 """
-class prim_conj:
+class indicativo:
     """
     Classe da primera cojugação, responsável pelos verbos terminados em ar do indicativo
     """
     def __init__(self, verbo):
-        if verbo[-2:] != "ar":
-            print("Este verbo não pertence a primera conjugação")
-        else:
-            self.verbo = verbo
-            self.pessoas = ["eu", "tu", "ela/ele", "nós", "vós", "elas/eles"]
+        self.sufixo = verbo[-2:]
+        self.verbo = verbo
+        self.pessoas = ["eu", "tu", "ela/ele", "nós", "vós", "elas/eles"]
+
+        if self.sufixo not in ['ar','er','ir']:
+            print("Sua palavra não é um verbo")
 
     def presente(self):
         irregulares = {}
@@ -29,8 +30,12 @@ class prim_conj:
         irregulares["passear"] = ["passeio","passeias","passeia","passeamos", "passeais","passeiam"]
         irregulares["averiguar"] = ["averíguo","averíguas","averígua","averiguamos", "averiguais","averíguam"]
 
-
-        sufixos = ["o", "as", "a", "amos", "ais", "am"]
+        if self.sufixo == 'ar':
+            sufixos = ["o", "as", "a", "amos", "ais", "am"]
+        elif self.sufixo == 'er':
+            sufixos = ["o", "es", "e", "emos", "eis", "em"]
+        elif self.sufixo == 'ir':
+            sufixos = ["o", "es", "e", "mos", "is", "em"]
 
         return self.resposta(irregulares,sufixos)
 
@@ -40,35 +45,60 @@ class prim_conj:
         irregulares["estar"] =  ["estive", "estiveste", "esteve", "estivemos", "estivestes", "estiveram",]
         irregulares["passear"] = ["passeei", "passeaste", "passeou", "passeamos", "passeastes", "passearam"]
 
-        sufixos = ["ei", "aste", "ou", "ámos", "astes", "aram"]
+        if self.sufixo == 'ar':
+            sufixos = ["ei", "aste", "ou", "ámos", "astes", "aram"]
+        elif self.sufixo == 'er':
+            sufixos = ["i", "este", "eu", "emos", "estes", "eram"]
+        elif self.sufixo == 'ir':
+            sufixos = ["i", "iste", "iu", "imos", "istes", "iram"]
 
         return self.resposta(irregulares,sufixos)
 
     def pret_imper(self):
         irregulares = {}
 
-        sufixos = ["ava", "avas", "ava", "ávamos", "áveis", "avam"]
+        if self.sufixo == 'ar':
+            sufixos = ["ava", "avas", "ava", "ávamos", "áveis", "avam"]
+        elif self.sufixo == 'er':
+            sufixos = ["ia", "ias", "ia", "íamos", "íeis", "iam"]
+        elif self.sufixo == 'ir':
+            sufixos = ["ia", "ias", "ia", "íamos", "íeis", "iam"]
 
         return self.resposta(irregulares,sufixos)
 
     def pret_maisque(self):
         irregulares = {}
 
-        sufixos = ["ara", "aras", "ara", "áramos", "áreis", "aram"]
+        if self.sufixo == 'ar':
+            sufixos = ["ara", "aras", "ara", "áramos", "áreis", "aram"]
+        elif self.sufixo == 'er':
+            sufixos = ["era", "eras", "era", "êramos", "êreis", "eram"]
+        elif self.sufixo == 'ir':
+            sufixos = ["ira", "iras", "ira", "íramos", "íreis", "iram"]
 
         return self.resposta(irregulares,sufixos)
 
     def futuro_pres(self):
         irregulares = {}
 
-        sufixos = ["arei", "arás", "ará", "aremos", "areis", "arão"]
+        if self.sufixo == 'ar':
+            sufixos = ["arei", "arás", "ará", "aremos", "areis", "arão"]
+        elif self.sufixo == 'er':
+            sufixos = ["erei", "erás", "erá", "eremos", "ereis", "erão"]
+        elif self.sufixo == 'ir':
+            sufixos = ["irei", "irás", "irá", "iremos", "ireis", "irão"]
 
         return self.resposta(irregulares,sufixos)
 
     def futuro_pret(self):
         irregulares = {}
 
-        sufixos = ["aria", "arias", "aria", "aríamos", "aríeis", "ariam"]
+        if self.sufixo == 'ar':
+            sufixos = ["aria", "arias", "aria", "aríamos", "aríeis", "ariam"]
+        elif self.sufixo == 'er':
+            sufixos = ["eria", "erias", "eria", "eríamos", "eríeis", "eriam"]
+        elif self.sufixo == 'ir':
+            sufixos = ["iria", "irias", "iria", "iríamos", "iríeis", "iriam"]
 
         return self.resposta(irregulares,sufixos)
 
