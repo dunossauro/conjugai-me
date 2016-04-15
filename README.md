@@ -4,6 +4,6 @@ Uma api python que conjuga verbos
 
 #### Metas:
 
-- Indicativo `(OK primeira conjugação regular)`
+- Indicativo `(OK com verbos regulares)`
 - Conjuntivo
 - Imperativo
