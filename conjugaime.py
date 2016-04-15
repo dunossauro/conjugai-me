@@ -5,6 +5,11 @@ from collections import OrderedDict
 palavra = input("Digite um verbo:\n")
 a = prim_conj(palavra)
 print(a.presente())
+print(a.pret_per())
+print(a.pret_imper())
+print(a.pret_maisque())
+print(a.futuro_pres())
+print(a.futuro_pret())
 """
 class prim_conj:
     """
@@ -35,7 +40,35 @@ class prim_conj:
         irregulares["estar"] =  ["estive", "estiveste", "esteve", "estivemos", "estivestes", "estiveram",]
         irregulares["passear"] = ["passeei", "passeaste", "passeou", "passeamos", "passeastes", "passearam"]
 
-        sufixos = [	"ei", "aste", "ou", "ámos", "astes", "aram"]
+        sufixos = ["ei", "aste", "ou", "ámos", "astes", "aram"]
+
+        return self.resposta(irregulares,sufixos)
+
+    def pret_imper(self):
+        irregulares = {}
+
+        sufixos = ["ava", "avas", "ava", "ávamos", "áveis", "avam"]
+
+        return self.resposta(irregulares,sufixos)
+
+    def pret_maisque(self):
+        irregulares = {}
+
+        sufixos = ["ara", "aras", "ara", "áramos", "áreis", "aram"]
+
+        return self.resposta(irregulares,sufixos)
+
+    def futuro_pres(self):
+        irregulares = {}
+
+        sufixos = ["arei", "arás", "ará", "aremos", "areis", "arão"]
+
+        return self.resposta(irregulares,sufixos)
+
+    def futuro_pret(self):
+        irregulares = {}
+
+        sufixos = ["aria", "arias", "aria", "aríamos", "aríeis", "ariam"]
 
         return self.resposta(irregulares,sufixos)
 
