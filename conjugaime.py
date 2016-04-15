@@ -1,20 +1,6 @@
 from collections import OrderedDict
 
-#       ----- Exemplo
-"""
-palavra = input("Digite um verbo:\n")
-a = indicativo(palavra)
-print(a.presente())
-print(a.pret_per())
-print(a.pret_imper())
-print(a.pret_maisque())
-print(a.futuro_pres())
-print(a.futuro_pret())
-"""
-class indicativo:
-    """
-    Classe da primera cojugação, responsável pelos verbos terminados em ar do indicativo
-    """
+class Auxiliar():
     def __init__(self, verbo):
         self.sufixo = verbo[-2:]
         self.verbo = verbo
@@ -23,6 +9,7 @@ class indicativo:
         if self.sufixo not in ['ar','er','ir']:
             print("Sua palavra não é um verbo")
 
+class Indicativo(Auxiliar):
     def presente(self):
         irregulares = {}
         irregulares["dar"] = ["dou", "dás", "dá", "damos", "dais", " 	dão"]
@@ -116,3 +103,19 @@ class indicativo:
                 conjugado[pessoa] = verbo
 
         return conjugado
+
+class Subjuntivo(Auxiliar):
+    def presente():
+        pass
+    def pret_imper():
+        pass
+    def futuro():
+        pass
+
+class Imperativo(Auxiliar):
+    def afirmativo():
+        pass
+    def negativo():
+        pass
+    def infinitivo():
+        pass
