@@ -7,9 +7,7 @@ a = prim_conj(palavra)
 print(a.presente())
 """
 class prim_conj:
-    """
-    Classe da primera cojugação, responsável pelos verbos terminados em ar
-    """
+    
     def __init__(self, verbo):
         if verbo[-2:] != "ar":
             print("Este verbo não pertence a primera conjugação")
