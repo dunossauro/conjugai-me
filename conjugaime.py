@@ -1,12 +1,13 @@
 from collections import OrderedDict
 
-class Auxiliar():
+
+class Auxiliar:
     def __init__(self, verbo):
         self.sufixo = verbo[-2:]
         self.verbo = verbo
         self.pessoas = ["eu", "tu", "ela/ele", "nós", "vós", "elas/eles"]
 
-        if self.sufixo not in ['ar','er','ir']:
+        if self.sufixo not in ['ar', 'er', 'ir']:
             print("Sua palavra não é um verbo")
 
     def resposta(self, irregulares, sufixos):
@@ -16,7 +17,9 @@ class Auxiliar():
             radical = self.verbo[:-2]
 
             for pessoa, sufixo in zip(self.pessoas, sufixos):
-                conjugado[pessoa] = "{radical}{sufixo}".format(radical=radical,sufixo=sufixo)
+                conjugado[pessoa] = "{radical}{sufixo}".format(
+                    radical=radical, sufixo=sufixo
+                )
 
         else:
             for pessoa, verbo in zip(self.pessoas, irregulares[self.verbo]):
@@ -24,15 +27,37 @@ class Auxiliar():
 
         return conjugado
 
+
 class Indicativo(Auxiliar):
     def presente(self):
         irregulares = {}
 
         if self.sufixo == 'ar':
             irregulares["dar"] = ["dou", "dás", "dá", "damos", "dais", " 	dão"]
-            irregulares["estar"] = ["estou","estás","está","estamos","estais","estão"]
-            irregulares["passear"] = ["passeio","passeias","passeia","passeamos", "passeais","passeiam"]
-            irregulares["averiguar"] = ["averíguo","averíguas","averígua","averiguamos", "averiguais","averíguam"]
+            irregulares["estar"] = [
+                "estou",
+                "estás",
+                "está",
+                "estamos",
+                "estais",
+                "estão",
+            ]
+            irregulares["passear"] = [
+                "passeio",
+                "passeias",
+                "passeia",
+                "passeamos",
+                "passeais",
+                "passeiam",
+            ]
+            irregulares["averiguar"] = [
+                "averíguo",
+                "averíguas",
+                "averígua",
+                "averiguamos",
+                "averiguais",
+                "averíguam",
+            ]
 
             sufixos = ["o", "as", "a", "amos", "ais", "am"]
 
@@ -41,15 +66,36 @@ class Indicativo(Auxiliar):
         elif self.sufixo == 'ir':
             sufixos = ["o", "es", "e", "mos", "is", "em"]
 
-        return self.resposta(irregulares,sufixos)
+        return self.resposta(irregulares, sufixos)
 
     def pret_per(self):
         irregulares = {}
 
         if self.sufixo == 'ar':
-            irregulares["dar"] = ["dei","deste","deu","demos","destes","deram"]
-            irregulares["estar"] =  ["estive", "estiveste", "esteve", "estivemos", "estivestes", "estiveram",]
-            irregulares["passear"] = ["passeei", "passeaste", "passeou", "passeamos", "passeastes", "passearam"]
+            irregulares["dar"] = [
+                "dei",
+                "deste",
+                "deu",
+                "demos",
+                "destes",
+                "deram",
+            ]
+            irregulares["estar"] = [
+                "estive",
+                "estiveste",
+                "esteve",
+                "estivemos",
+                "estivestes",
+                "estiveram",
+            ]
+            irregulares["passear"] = [
+                "passeei",
+                "passeaste",
+                "passeou",
+                "passeamos",
+                "passeastes",
+                "passearam",
+            ]
 
             sufixos = ["ei", "aste", "ou", "ámos", "astes", "aram"]
 
@@ -58,7 +104,7 @@ class Indicativo(Auxiliar):
         elif self.sufixo == 'ir':
             sufixos = ["i", "iste", "iu", "imos", "istes", "iram"]
 
-        return self.resposta(irregulares,sufixos)
+        return self.resposta(irregulares, sufixos)
 
     def pret_imper(self):
         irregulares = {}
@@ -70,7 +116,7 @@ class Indicativo(Auxiliar):
         elif self.sufixo == 'ir':
             sufixos = ["ia", "ias", "ia", "íamos", "íeis", "iam"]
 
-        return self.resposta(irregulares,sufixos)
+        return self.resposta(irregulares, sufixos)
 
     def pret_maisque(self):
         irregulares = {}
@@ -82,7 +128,7 @@ class Indicativo(Auxiliar):
         elif self.sufixo == 'ir':
             sufixos = ["ira", "iras", "ira", "íramos", "íreis", "iram"]
 
-        return self.resposta(irregulares,sufixos)
+        return self.resposta(irregulares, sufixos)
 
     def futuro_pres(self):
         irregulares = {}
@@ -94,7 +140,7 @@ class Indicativo(Auxiliar):
         elif self.sufixo == 'ir':
             sufixos = ["irei", "irás", "irá", "iremos", "ireis", "irão"]
 
-        return self.resposta(irregulares,sufixos)
+        return self.resposta(irregulares, sufixos)
 
     def futuro_pret(self):
         irregulares = {}
@@ -106,20 +152,26 @@ class Indicativo(Auxiliar):
         elif self.sufixo == 'ir':
             sufixos = ["iria", "irias", "iria", "iríamos", "iríeis", "iriam"]
 
-        return self.resposta(irregulares,sufixos)
+        return self.resposta(irregulares, sufixos)
+
 
 class Subjuntivo(Auxiliar):
     def presente():
         pass
+
     def pret_imper():
         pass
+
     def futuro():
         pass
+
 
 class Imperativo(Auxiliar):
     def afirmativo():
         pass
+
     def negativo():
         pass
+
     def infinitivo():
         pass
