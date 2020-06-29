@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "conjugai-me"
+name = "conjugaime"
 version = "0.1.0"
 description = ""
 authors = ["dunossauro <mendesxeduardo@gmail.com>"]
@@ -8,6 +8,7 @@ authors = ["dunossauro <mendesxeduardo@gmail.com>"]
 python = "^3.8"
 
 [tool.poetry.dev-dependencies]
+tox = "^3.16.0"
 
 [build-system]
 requires = ["poetry>=0.12"]
